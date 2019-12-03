@@ -46,5 +46,25 @@ class TimeComplexityTest {
 		int result = tester.PermMissingElem(A);
 		assertEquals(1, result);
 	}
+	
+	@Test
+	void checkVectorSizeOne() {
+		int[] A = new int[]{1};
+		int result = tester.tapeEquilibrum(A);
+		assertEquals(0, result);
+	}
 
+	@Test
+	void checkVectorWithPositiveNumbers() {
+		int[] A = new int[]{4, 1, 2};
+		int result = tester.tapeEquilibrum(A);
+		assertEquals(1, result);
+	}
+
+	@Test
+	void checkVectorWithNegativeNumbers() {
+		int[] A = new int[]{4, 1, -1, 4, -4};
+		int result = tester.tapeEquilibrum(A);
+		assertEquals(4, result);
+	}
 }

@@ -1,6 +1,7 @@
 package pl.TestingTasks;
 
 import java.util.Arrays;
+import java.util.stream.*;
 
 public class TimeComplexity {
 
@@ -22,7 +23,22 @@ public class TimeComplexity {
 			    for (int i = 0; i < A.length - 1; i++)
 	        if (A[i+1] - A[i] != 1)
 	            return i+2;
-		System.out.println(A.length);
 		return 0;
+	}
+	
+	public int tapeEquilibrum(int[] A) {
+		if (A.length <= 1)
+			return 0;
+		
+		int diffrence = 100000;
+		int left = 0;
+		int right = IntStream.of(A).sum();
+		for (int i: A) {
+			left += i;
+			right -= i;
+			diffrence = Math.min(diffrence, Math.abs(left - right));
+		}
+		
+		return diffrence;
 	}
 }
