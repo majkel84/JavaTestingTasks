@@ -48,4 +48,32 @@ class CountingElementsTest {
 		int result = tester.PermCheck(A);
 		assertEquals(0, result);
 	}
+	
+	@Test
+	void checkFrogArrayOne() {
+		int[] A = new int[]{1};
+		int result = tester.FrogRiverOne(1, A);
+		assertEquals(0, result);
+	}
+	
+	@Test
+	void checkFrogSortedArray() {
+		int[] A = new int[]{1, 2, 3, 4, 5};
+		int result = tester.FrogRiverOne(5, A);
+		assertEquals(4, result);
+	}
+	
+	@Test
+	void checkFrogMisingNumber() {
+		int[] A = new int[]{1, 5, 2, 4, 2};
+		int result = tester.FrogRiverOne(5, A);
+		assertEquals(-1, result);
+	}
+	
+	@Test
+	void checkFrogNotSortedArray() {
+		int[] A = new int[]{1, 1, 6, 7, 3, 5, 2, 4, 2};
+		int result = tester.FrogRiverOne(5, A);
+		assertEquals(7, result);
+	}
 }
