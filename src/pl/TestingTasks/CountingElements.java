@@ -2,6 +2,7 @@ package pl.TestingTasks;
 
 import java.util.stream.IntStream;
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class CountingElements {
 	
@@ -22,7 +23,7 @@ public class CountingElements {
 	}
 
 	public int FrogRiverOne(int X, int[] A) {
-		int position = -1;
+		/*int position = -1;
 		int maxPosition = -1;
 		
 		if (X > A.length)
@@ -36,7 +37,18 @@ public class CountingElements {
 			}
 			else
 				return -1;
+			position = A.indexOf(i);
 		}	
-		return maxPosition;
+		return maxPosition;*/
+        HashSet<Integer> hset = new HashSet<Integer>();
+
+        for (int i = 0 ; i < A.length; i++) {
+            if (A[i] <= X)
+               hset.add(A[i]);   
+            if (hset.size() == X)
+               return i;
+        }
+
+        return -1;
 	}
 }
