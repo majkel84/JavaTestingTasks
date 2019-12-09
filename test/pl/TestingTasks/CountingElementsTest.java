@@ -76,4 +76,12 @@ class CountingElementsTest {
 		int result = tester.FrogRiverOne(5, A);
 		assertEquals(7, result);
 	}
+	
+	@Test
+	void checkMaxCountVector() {
+		int[] A = new int[]{3, 4, 4, 6, 1, 4, 4};
+		int[] solution = new int[]{3, 2, 2, 4, 2};
+		int[] result = tester.MaxCounters(5, A);
+		assertEquals(solution, result);
+	}
 }

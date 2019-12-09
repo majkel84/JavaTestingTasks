@@ -23,32 +23,36 @@ public class CountingElements {
 	}
 
 	public int FrogRiverOne(int X, int[] A) {
-		/*int position = -1;
-		int maxPosition = -1;
-		
-		if (X > A.length)
-			return -1;
-		
-		for (int i = 1; i <= X; i++) {
-			int p = i;
-			position = IntStream.range(0, A.length).filter(pos -> p == A[pos]).findFirst().orElse(-1);
-			if (position != -1) {
-				maxPosition = maxPosition < position ? position : maxPosition;
-			}
-			else
-				return -1;
-			position = A.indexOf(i);
-		}	
-		return maxPosition;*/
-        HashSet<Integer> hset = new HashSet<Integer>();
+        HashSet<Integer> hashSet = new HashSet<Integer>();
 
         for (int i = 0 ; i < A.length; i++) {
             if (A[i] <= X)
-               hset.add(A[i]);   
-            if (hset.size() == X)
+            	hashSet.add(A[i]);   
+            if (hashSet.size() == X)
                return i;
         }
-
         return -1;
+	}
+	
+	public int[] MaxCounters(int N, int[] A) {
+		int[] solution = new int[N];
+		int currentMax = 0;
+		int maxCounter = 0;
+		
+		for (int i = 0; i < A.length;  i++) {
+
+			if (A[i] >= 1 && A[i] <= N) {
+				solution[A[i] - 1] = Math.max(currentMax, solution[A[i] - 1]);
+				solution[A[i] - 1] += 1;
+				maxCounter = Math.max(maxCounter, solution[A[i] - 1]);
+			}
+			else if (A[i] == N + 1)
+				currentMax = maxCounter;
+		}
+		
+		for(int i = 0 ; i < solution.length; i++) {
+			solution[i] = Math.max(solution[i], currentMax);
+		}
+		return solution;
 	}
 }
